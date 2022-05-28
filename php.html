@@ -1,0 +1,50 @@
+!DOCTYPE html>
+<html>
+<head>
+  <title>Kasmetinių atostogų prašymas</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="title">
+      <h1>Kasmetinių atostogų prašymas</h1>
+    </div>
+    <div class="form">
+  <form id="requestForm" method="POST"  target="_blank">
+
+    <input type="date" name="request_date" id="input_field" placeholder="Prašymo data"  required></br></br>
+
+    <input type="text" name="first_name" placeholder="Vardas" id="input_field" required></br></br>
+
+    <input type="text" name="last_name" placeholder="Pavardė" id="input_field" ></br></br>
+
+    <input type="number" name="personal_code" placeholder="Asmens kodas" id="input_field" min="11" max="11" ></br></br>
+
+    <input type="text" name="p_address" placeholder="Jūsų adresas" id="input_field" ></br></br>
+
+    <input type="date" name="requestDateFrom" id="input_field" placeholder="Atostogos nuo"  ></br></br>
+
+    <input type="date" name="requestDateTo" id="input_field" placeholder="Atostogos iki"  ></br></br>
+
+    <input type="number" name="daysNumber" placeholder="Atostogų dienų skaičius" id="input_field" ></br></br>
+  </br>
+  <Input type="button" name="submit_button" id="buttonLast" value="Patvirtinti">
+  </form>
+</div>  
+<script>
+  $(document).ready(function(){
+    $("#buttonLast").click(function(){
+      $.ajax({
+        url:"http://127.0.0.1:5500/insert.php",
+        type: "POST", 
+        data:$("#requestForm").serialize(),
+        success:function(response)
+        {
+          alert("Well done!");
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
